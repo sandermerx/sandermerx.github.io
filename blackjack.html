@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blackjack Cru</title>
+    <title>Blackjack</title>
     
-    <!-- Fallback do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
@@ -26,10 +25,7 @@
             --blood-red: #cc0000;
         }
 
-        * {
-            box-sizing: border-box;
-            user-select: none;
-        }
+        * { box-sizing: border-box; user-select: none; }
 
         body {
             background-color: var(--bg-color);
@@ -38,163 +34,184 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             min-height: 100vh;
             margin: 0;
             text-align: center;
+            padding-top: 20px;
         }
 
+        /* Top Bar com Placar */
+        .top-bar {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .stats {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 1.2rem;
+            color: #888;
+        }
+
+        .stat-value { color: var(--text-color); margin-left: 5px; margin-right: 15px; }
+
         h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            letter-spacing: 5px;
-            border-bottom: 2px solid var(--text-color);
-            padding-bottom: 10px;
-            text-shadow: none; /* Sem sombra */
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: 3px;
+            /* Removido uppercase */
         }
 
         .table {
             width: 100%;
             max-width: 900px;
             padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .hand-area {
-            margin: 30px 0;
-            min-height: 180px;
-        }
+        .hand-area { margin: 20px 0; min-height: 160px; }
 
         .hand-title {
-            font-size: 2rem;
-            margin-bottom: 15px;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
             color: var(--text-color);
         }
 
         .cards-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
-        /* Estilo da Carta - TOTALMENTE FLAT */
         .card {
             background-color: var(--card-bg);
             color: var(--card-ink);
-            width: 100px;
-            height: 150px;
-            border: 2px solid var(--card-bg); /* Sem borda visível ou borda simples */
+            width: 90px;
+            height: 140px;
+            border: 2px solid var(--card-bg);
             border-radius: 0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             padding: 5px;
-            font-size: 1.8rem;
-            box-shadow: none; /* Sem sombra */
+            font-size: 1.5rem;
             position: relative;
             font-family: 'UnifrakturMaguntia', serif;
         }
 
-        .card.red {
-            color: var(--blood-red);
-        }
-
-        /* Borda preta interna para dar contraste na carta branca */
         .card::after {
-            content: '';
-            position: absolute;
+            content: ''; position: absolute;
             top: 4px; left: 4px; right: 4px; bottom: 4px;
-            border: 2px solid var(--card-ink);
-            pointer-events: none;
+            border: 1px solid var(--card-ink);
         }
         
-        .card.red::after {
-            border-color: var(--blood-red);
-        }
+        .card.red { color: var(--blood-red); }
+        .card.red::after { border-color: var(--blood-red); }
 
-        .card-top { align-self: flex-start; line-height: 1; margin-left: 8px; margin-top: 5px; z-index: 2;}
         .card-center { 
-            position: absolute; 
-            top: 50%; 
-            left: 50%; 
+            position: absolute; top: 50%; left: 50%; 
             transform: translate(-50%, -50%); 
-            font-size: 4rem;
-            z-index: 2;
+            font-size: 3rem; 
         }
-        .card-bottom { align-self: flex-end; transform: rotate(180deg); line-height: 1; margin-left: 8px; margin-top: 5px; z-index: 2;}
+        
+        .card-bottom { align-self: flex-end; transform: rotate(180deg); }
 
         .controls {
-            margin-top: 50px;
+            margin-top: 30px;
             display: flex;
-            gap: 30px;
+            gap: 20px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         button {
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: inherit;
-            font-size: 2rem;
-            padding: 15px 40px;
-            border: 4px solid var(--text-color); /* Borda grossa */
+            font-size: 1.8rem;
+            padding: 10px 30px;
+            border: 3px solid var(--text-color);
             border-radius: 0;
             cursor: pointer;
-            box-shadow: none; /* Sem sombra */
-            transition: none; /* Sem transição suave */
+            min-width: 150px;
+            /* Removido uppercase */
         }
 
         button:hover:not(:disabled) {
             background-color: var(--text-color);
             color: var(--bg-color);
-            /* Inversão simples de cores, sem brilho */
         }
 
-        button:disabled {
-            opacity: 0.2;
-            cursor: not-allowed;
-            border-color: #555;
-            color: #555;
-        }
+        button:disabled { opacity: 0.2; cursor: not-allowed; border-color: #444; color: #444; }
 
         #message {
-            margin-top: 20px;
-            font-size: 2.5rem;
+            margin-top: 15px;
+            font-size: 2rem;
             color: var(--blood-red);
-            min-height: 3.5rem;
-            text-shadow: none; /* Sem sombra */
+            min-height: 3rem;
         }
 
-        .score {
-            font-size: 1.5rem;
-            margin-left: 10px;
-            color: var(--blood-red);
+        .score-display { font-size: 1.2rem; margin-left: 10px; color: var(--blood-red); }
+
+        /* Botão de resetar histórico pequeno no rodapé */
+        .reset-data {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #444;
+            background: none;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-family: sans-serif;
+            text-decoration: underline;
         }
+        .reset-data:hover { color: var(--blood-red); background: none; }
     </style>
 </head>
 <body>
 
-    <h1>Black Jack</h1>
+    <div class="top-bar">
+        <h1>Black Jack</h1>
+        <div class="stats">
+            Vitórias: <span id="win-count" class="stat-value">0</span>
+            Derrotas: <span id="loss-count" class="stat-value">0</span>
+        </div>
+    </div>
 
     <div class="table">
         <!-- Dealer -->
         <div class="hand-area">
-            <div class="hand-title">Dealer <span id="dealer-score" class="score"></span></div>
+            <div class="hand-title">Dealer <span id="dealer-score" class="score-display"></span></div>
             <div class="cards-container" id="dealer-cards"></div>
         </div>
 
-        <div id="message"></div>
+        <div id="message">Pressione Iniciar</div>
 
         <!-- Jogador -->
         <div class="hand-area">
-            <div class="hand-title">Sua Alma <span id="player-score" class="score"></span></div>
+            <div class="hand-title">Jogador <span id="player-score" class="score-display"></span></div>
             <div class="cards-container" id="player-cards"></div>
         </div>
 
         <div class="controls">
-            <button id="btn-hit" onclick="hit()">Carta</button>
-            <button id="btn-stand" onclick="stand()">Parar</button>
-            <button id="btn-new" onclick="newGame()" style="display:none;">Novo Jogo</button>
+            <!-- Botões de Jogo -->
+            <button id="btn-hit" onclick="hit()" style="display:none;">Carta</button>
+            <button id="btn-stand" onclick="stand()" style="display:none;">Parar</button>
+            
+            <!-- Botão Principal (Iniciar / Novo Jogo) -->
+            <button id="btn-new" onclick="startNewGame()">Iniciar Jogo</button>
         </div>
+        
+        <button class="reset-data" onclick="resetStats()">Apagar memórias</button>
     </div>
 
     <script>
@@ -204,16 +221,47 @@
         let deck = [];
         let playerHand = [];
         let dealerHand = [];
-        let gameOver = false;
+        let gameActive = false; // Controle de estado
 
+        // Carregar dados salvos
+        let wins = parseInt(localStorage.getItem('bj_wins') || '0');
+        let losses = parseInt(localStorage.getItem('bj_losses') || '0');
+
+        // Elementos
         const dealerCardsEl = document.getElementById('dealer-cards');
         const playerCardsEl = document.getElementById('player-cards');
         const messageEl = document.getElementById('message');
         const dealerScoreEl = document.getElementById('dealer-score');
         const playerScoreEl = document.getElementById('player-score');
+        
         const btnHit = document.getElementById('btn-hit');
         const btnStand = document.getElementById('btn-stand');
         const btnNew = document.getElementById('btn-new');
+        
+        const winCountEl = document.getElementById('win-count');
+        const lossCountEl = document.getElementById('loss-count');
+
+        // Atualiza o placar visual ao carregar
+        updateStatsUI();
+
+        function updateStatsUI() {
+            winCountEl.innerText = wins;
+            lossCountEl.innerText = losses;
+        }
+
+        function saveStats() {
+            localStorage.setItem('bj_wins', wins);
+            localStorage.setItem('bj_losses', losses);
+            updateStatsUI();
+        }
+
+        function resetStats() {
+            if(confirm('Deseja esquecer todo o passado?')) {
+                wins = 0;
+                losses = 0;
+                saveStats();
+            }
+        }
 
         function createDeck() {
             deck = [];
@@ -255,11 +303,10 @@
             const div = document.createElement('div');
             const isRed = card.suit === '♥' || card.suit === '♦';
             div.className = `card ${isRed ? 'red' : ''}`;
-            
             div.innerHTML = `
-                <div class="card-top">${card.value}</div>
+                <div style="align-self: flex-start; margin-left:5px; line-height:1">${card.value}</div>
                 <div class="card-center">${card.suit}</div>
-                <div class="card-bottom">${card.value}</div>
+                <div class="card-bottom" style="margin-left:5px; line-height:1">${card.value}</div>
             `;
             return div;
         }
@@ -268,17 +315,21 @@
             dealerCardsEl.innerHTML = '';
             playerCardsEl.innerHTML = '';
 
+            // Se o jogo não começou ou as mãos estão vazias, não desenha nada
+            if (playerHand.length === 0 && dealerHand.length === 0) {
+                dealerScoreEl.innerText = '';
+                playerScoreEl.innerText = '';
+                return;
+            }
+
             // Dealer
             dealerHand.forEach((card, index) => {
                 if (index === 0 && !showDealerHiddenCard) {
                     const hiddenCard = document.createElement('div');
                     hiddenCard.className = 'card';
-                    hiddenCard.style.backgroundColor = '#000'; // Fundo preto
-                    hiddenCard.style.border = '2px solid #fff'; // Borda branca
-                    // Cruz centralizada para carta oculta
-                    hiddenCard.innerHTML = `
-                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#cc0000; font-size:4rem;">†</div>
-                    `;
+                    hiddenCard.style.backgroundColor = '#000';
+                    hiddenCard.style.border = '2px solid #fff';
+                    hiddenCard.innerHTML = '<div class="card-center" style="color:#cc0000;">†</div>';
                     dealerCardsEl.appendChild(hiddenCard);
                 } else {
                     dealerCardsEl.appendChild(createCardElement(card));
@@ -290,7 +341,6 @@
                 playerCardsEl.appendChild(createCardElement(card));
             });
 
-            // Placar
             playerScoreEl.innerText = `[${calculateScore(playerHand)}]`;
             if (showDealerHiddenCard) {
                 dealerScoreEl.innerText = `[${calculateScore(dealerHand)}]`;
@@ -299,8 +349,8 @@
             }
         }
 
-        function newGame() {
-            gameOver = false;
+        function startNewGame() {
+            gameActive = true;
             createDeck();
             shuffleDeck();
             
@@ -308,12 +358,14 @@
             dealerHand = [deck.pop(), deck.pop()];
             
             messageEl.innerText = '';
-            btnHit.disabled = false;
-            btnStand.disabled = false;
+            
+            // Controle de Botões
             btnNew.style.display = 'none';
             btnHit.style.display = 'inline-block';
             btnStand.style.display = 'inline-block';
-            
+            btnHit.disabled = false;
+            btnStand.disabled = false;
+
             updateUI();
             checkInstantVictory();
         }
@@ -322,29 +374,26 @@
             const pScore = calculateScore(playerHand);
             if (pScore === 21) {
                 updateUI(true);
-                endGame("21! VITÓRIA ABSOLUTA.");
+                endGame("Blackjack! Vitória.", true);
             }
         }
 
         function hit() {
-            if (gameOver) return;
+            if (!gameActive) return;
             playerHand.push(deck.pop());
             updateUI();
             
             const pScore = calculateScore(playerHand);
-
             if (pScore === 21) {
                 updateUI(true);
-                endGame("21! VITÓRIA.");
-                return;
-            }
-            if (pScore > 21) {
-                endGame("ESTOUROU. DERROTA.");
+                endGame("21! Vitória.", true);
+            } else if (pScore > 21) {
+                endGame("Estourou. Derrota.", false);
             }
         }
 
         function stand() {
-            if (gameOver) return;
+            if (!gameActive) return;
             let dScore = calculateScore(dealerHand);
             
             while (dScore < 17) {
@@ -357,35 +406,34 @@
         function determineWinner() {
             const pScore = calculateScore(playerHand);
             const dScore = calculateScore(dealerHand);
-            
             updateUI(true); 
 
             if (dScore > 21) {
-                messageEl.innerText = "DEALER MORREU. VOCÊ VIVE.";
+                endGame("Dealer estourou. Vitória.", true);
             } else if (pScore > dScore) {
-                messageEl.innerText = "VITÓRIA.";
+                endGame("Vitória.", true);
             } else if (pScore < dScore) {
-                messageEl.innerText = "DERROTA.";
+                endGame("Derrota.", false);
             } else {
-                messageEl.innerText = "EMPATE.";
+                endGame("Empate.", null); // Null para empate (não conta nem ganha)
             }
-            setGameOverState();
         }
 
-        function endGame(msg) {
-            updateUI(true); 
+        function endGame(msg, playerWon) {
+            gameActive = false;
             messageEl.innerText = msg;
-            setGameOverState();
-        }
+            
+            // Atualizar Placar
+            if (playerWon === true) wins++;
+            if (playerWon === false) losses++;
+            saveStats();
 
-        function setGameOverState() {
-            gameOver = true;
+            // Resetar Botões
             btnHit.style.display = 'none';
             btnStand.style.display = 'none';
             btnNew.style.display = 'inline-block';
+            btnNew.innerText = "Próxima Mão";
         }
-
-        newGame();
     </script>
 </body>
 </html>
