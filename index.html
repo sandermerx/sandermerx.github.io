@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>55</title>
+    
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'Faith Collapsing';
+            src: url('FaithCollapsing.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            --bg-void: #000000;
+            --paper: #ffffff;
+            --ink: #000000;
+            --blood: #cc0000;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-void);
+            color: var(--ink);
+            font-family: 'Faith Collapsing', 'UnifrakturMaguntia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Centraliza a folha na tela */
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* A Folha A4 */
+        .sheet {
+            background-color: var(--paper);
+            width: 100%;
+            max-width: 210mm; /* Largura A4 */
+            min-height: 297mm; /* Altura A4 */
+            padding: 25mm 20mm; /* Margens de impressão padrão */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Empurra os botões para o final */
+            box-shadow: none; /* Sem sombra, totalmente flat */
+            border: 1px solid var(--paper); /* Apenas para garantir limites */
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 4px solid var(--ink);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 5rem;
+            margin: 0;
+            text-transform: uppercase;
+            line-height: 0.9;
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            color: var(--blood);
+            text-transform: uppercase;
+        }
+
+        .content {
+            font-family: 'UnifrakturMaguntia', serif; /* Mais legível para texto longo */
+            font-size: 1.8rem;
+            line-height: 1.4;
+            flex-grow: 1; /* Ocupa o espaço disponível */
+            text-align: justify;
+        }
+
+        .content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .actions {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            border-top: 2px solid var(--ink);
+            padding-top: 40px;
+        }
+
+        /* Estilo dos Botões (Invertido para o papel branco) */
+        button {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: 'Faith Collapsing', 'UnifrakturMaguntia', serif;
+            font-size: 2.5rem;
+            padding: 15px 60px;
+            border: 4px solid var(--ink);
+            border-radius: 0;
+            cursor: pointer;
+            text-transform: uppercase;
+            width: 100%;
+            max-width: 400px;
+            transition: none;
+        }
+
+        button:hover {
+            background-color: var(--ink);
+            color: var(--paper);
+        }
+
+        a {
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .warning {
+            font-size: 1rem;
+            margin-top: 20px;
+            color: var(--blood);
+            text-transform: uppercase;
+        }
+
+        /* Para telas menores que A4 */
+        @media (max-width: 800px) {
+            .sheet {
+                height: auto;
+                min-height: 100vh;
+                width: 100%;
+                padding: 20px;
+            }
+            
+            h1 { font-size: 3.5rem; }
+            .content { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="sheet">
+        <header>
+            <h1>Black Jack</h1>
+            <div class="subtitle">Edição Memento Mori</div>
+        </header>
+
+        <div class="content">
+            <!-- DIGITE SEU TEXTO ABAIXO -->
+            <p>
+                31573
+            </p>
+            <p>
+                74
+            </p>
+            <p>
+                7473274
+            </p>
+            <p style="color: #cc0000;">
+                0912576
+            </p>
+            <!-- FIM DO TEXTO -->
+        </div>
+
+        <div class="actions">
+            <!-- Link para o arquivo do jogo -->
+            <a href="blackjack.html">
+                <button>Assinar Contrato</button>
+            </a>
+            
+            <!-- Botão decorativo ou link para créditos -->
+            <button onclick="alert('Não há saída.')">Sair</button>
+            
+            <div class="warning">
+                989
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
