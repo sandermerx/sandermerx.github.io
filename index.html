@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>55</title>
+    <title>Contrato</title>
     
-    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
@@ -25,9 +24,7 @@
             --blood: #cc0000;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             background-color: var(--bg-void);
@@ -35,84 +32,79 @@
             font-family: 'Faith Collapsing', 'UnifrakturMaguntia', serif;
             display: flex;
             justify-content: center;
-            align-items: center; /* Centraliza a folha na tela */
+            align-items: flex-start; /* Alinha no topo para permitir scroll se necessário */
             min-height: 100vh;
             margin: 0;
             padding: 20px;
         }
 
-        /* A Folha A4 */
+        /* A Folha A4 Responsiva */
         .sheet {
             background-color: var(--paper);
             width: 100%;
-            max-width: 210mm; /* Largura A4 */
-            min-height: 297mm; /* Altura A4 */
-            padding: 25mm 20mm; /* Margens de impressão padrão */
+            max-width: 210mm; /* Largura máxima de um A4 */
+            min-height: 297mm; /* Altura mínima de um A4 */
+            padding: 20mm; /* Margens internas */
+            margin: 20px auto;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Empurra os botões para o final */
-            box-shadow: none; /* Sem sombra, totalmente flat */
-            border: 1px solid var(--paper); /* Apenas para garantir limites */
+            justify-content: space-between;
+            border: 1px solid #ddd;
         }
 
         header {
             text-align: center;
             border-bottom: 4px solid var(--ink);
             padding-bottom: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         h1 {
-            font-size: 5rem;
+            font-size: 4rem;
             margin: 0;
-            text-transform: uppercase;
-            line-height: 0.9;
-            letter-spacing: -2px;
+            line-height: 1;
+            /* Removido uppercase forçado */
         }
 
         .subtitle {
             font-size: 1.5rem;
             margin-top: 10px;
             color: var(--blood);
-            text-transform: uppercase;
         }
 
         .content {
-            font-family: 'UnifrakturMaguntia', serif; /* Mais legível para texto longo */
-            font-size: 1.8rem;
-            line-height: 1.4;
-            flex-grow: 1; /* Ocupa o espaço disponível */
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 1.6rem;
+            line-height: 1.5;
+            flex-grow: 1;
             text-align: justify;
         }
 
-        .content p {
-            margin-bottom: 1.5rem;
-        }
+        .content p { margin-bottom: 1.5rem; }
 
         .actions {
-            margin-top: 50px;
+            margin-top: 40px;
             display: flex;
             flex-direction: column;
             gap: 15px;
             align-items: center;
             border-top: 2px solid var(--ink);
-            padding-top: 40px;
+            padding-top: 30px;
         }
 
-        /* Estilo dos Botões (Invertido para o papel branco) */
         button {
             background-color: var(--paper);
             color: var(--ink);
             font-family: 'Faith Collapsing', 'UnifrakturMaguntia', serif;
-            font-size: 2.5rem;
-            padding: 15px 60px;
+            font-size: 2rem;
+            padding: 15px 40px;
             border: 4px solid var(--ink);
             border-radius: 0;
             cursor: pointer;
-            text-transform: uppercase;
             width: 100%;
             max-width: 400px;
             transition: none;
+            /* Removido uppercase forçado */
         }
 
         button:hover {
@@ -120,32 +112,27 @@
             color: var(--paper);
         }
 
-        a {
-            text-decoration: none;
-            display: block;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
+        a { text-decoration: none; width: 100%; display: flex; justify-content: center; }
 
         .warning {
             font-size: 1rem;
             margin-top: 20px;
             color: var(--blood);
-            text-transform: uppercase;
+            text-align: center;
         }
 
-        /* Para telas menores que A4 */
-        @media (max-width: 800px) {
+        /* Ajustes para Celular */
+        @media (max-width: 600px) {
+            body { padding: 0; }
             .sheet {
-                height: auto;
-                min-height: 100vh;
                 width: 100%;
+                min-height: 100vh;
+                margin: 0;
                 padding: 20px;
+                border: none;
             }
-            
-            h1 { font-size: 3.5rem; }
-            .content { font-size: 1.4rem; }
+            h1 { font-size: 3rem; }
+            .content { font-size: 1.3rem; }
         }
     </style>
 </head>
@@ -153,38 +140,32 @@
 
     <main class="sheet">
         <header>
-            <h1>Black Jack</h1>
-            <div class="subtitle">Edição Memento Mori</div>
+            <h1>Cru</h1>
+            <div class="subtitle">Contrato de Risco</div>
         </header>
 
         <div class="content">
-            <!-- DIGITE SEU TEXTO ABAIXO -->
             <p>
-                31573
+                Quer jogar algum jogo?
             </p>
             <p>
-                74
+                Todos os jogo salvará cada vitória e cada derrota em seu navegador.
             </p>
             <p>
-                7473274
+                O princípio é simples, procure o número 21.
             </p>
             <p style="color: #cc0000;">
-                0912576
+                Ao confirmar, você concorda em se auto responsabilizar por quaisquer danos ao seu navegador ou dispositivo.
             </p>
-            <!-- FIM DO TEXTO -->
         </div>
 
         <div class="actions">
-            <!-- Link para o arquivo do jogo -->
             <a href="blackjack.html">
-                <button>Assinar Contrato</button>
+                <button>Assinar e Jogar</button>
             </a>
             
-            <!-- Botão decorativo ou link para créditos -->
-            <button onclick="alert('Não há saída.')">Sair</button>
-            
             <div class="warning">
-                989
+                Cru
             </div>
         </div>
     </main>
